@@ -52,7 +52,7 @@ $(document).ready(function () {
         var currentTemp = $("<div></div>")
         currentTemp.addClass("text-center")
         var currentTempEl = displayData[0].temp
-        currentTemp.text(currentTempEl)
+        currentTemp.text(currentTempEl+"°C")
         $("#cityName").append(currentTemp)
 
         for (i = 0; i < displayData.length; i++) {
@@ -64,11 +64,11 @@ $(document).ready(function () {
           $(cityDiv).append(datePara)
           var maxTempPara = $("<p></p>");
           var maxTempDis = displayData[i].maxTemp
-          maxTempPara.text(maxTempDis)
+          maxTempPara.text(maxTempDis+"°C ")
           $(cityDiv).append(maxTempPara)
           var tempPara = $("<p></p>");
           var tempDis = displayData[i].temp
-          tempPara.text(tempDis)
+          tempPara.text(tempDis+"°C ")
           $(cityDiv).append(tempPara)
           $("#addData").append(cityDiv)
         }
@@ -76,16 +76,12 @@ $(document).ready(function () {
   });
 
   //     New Start
-  var buttonContainer = $(".d-grid")
-  buttonContainer.click(function (event) {
+
+  $("#attBtn").click(function (event) {
     var buttonClicked = event.target
     if (buttonClicked.matches(".cityBtn"))
       console.log("button")
-    myFunction()
-    event.stopPropagation()
-  })
-
-  function myFunction() {
+    //event.stopPropagation()
     var abc = event.target.id
     var cityWeather = []
     var index = 0
@@ -102,11 +98,70 @@ $(document).ready(function () {
 
         cityWeather.push(data);
         console.log(cityWeather);
-      })
-  };
-  
 
+
+        //              Latest                 //
+        $("#addData").empty()
+        $("#cityName").empty()
+      
+        var El = $(buttonClicked).text()
+        var namePara = $("<div></div>")
+        namePara.addClass("text-center")
+        namePara.text(El.toUpperCase())
+        $("#cityName").append(namePara)
+
+        for (i = 0; i < 5; i++) {
+          var temp = cityWeather[0].list[index].main.temp
+          var maxTemp = cityWeather[0].list[index].main.temp_max
+          var city = cityWeather[0].city.name
+          var rawDate = dayjs.unix(cityWeather[0].list[index].dt)
+          var date = rawDate.format("MMM D, YYYY");
+          var icon = cityWeather[0].list[index].weather[0].icon;
+          weatherForecast.push({ "temp": temp, "city": city, "date": date, "icon": icon, "maxTemp": maxTemp });
+          index += 8;
+          localStorage.setItem("forecast", JSON.stringify(weatherForecast));
+          console.log(weatherForecast);
+         // var displayData = JSON.parse(localStorage.getItem("forecast"));
+       // var currentTemp = $("<div></div>")
+        //currentTemp.addClass("text-center")
+        //var currentTempEl = displayData[0].temp
+       // currentTemp.text(currentTempEl)
+        //$("#cityName").append(currentTemp)
+        }
+        var displayData = JSON.parse(localStorage.getItem("forecast"));
+        var currentTemp = $("<div></div>")
+        currentTemp.addClass("text-center")
+        var currentTempEl = displayData[0].temp
+        currentTemp.text(currentTempEl+"°C ")
+        $("#cityName").append(currentTemp)
+        for (i = 0; i < displayData.length; i++) {
+          var cityDiv = $("<div></div>")
+          cityDiv.addClass("col-md-3 custom mx-2 my-2")
+          var datePara = $("<p></p>");
+          var dateDis = dayjs(displayData[i].date).format("ddd")
+          datePara.text(dateDis)
+          $(cityDiv).append(datePara)
+          var maxTempPara = $("<p></p>");
+          var maxTempDis = displayData[i].maxTemp
+          maxTempPara.text(maxTempDis+"°C ")
+          $(cityDiv).append(maxTempPara)
+          var tempPara = $("<p></p>");
+          var tempDis = displayData[i].temp
+          tempPara.text(tempDis+"°C ")
+          $(cityDiv).append(tempPara)
+          $("#addData").append(cityDiv)
+          event.stopPropagation()
+        }
+
+        
+      })
+
+
+
+  })
 })
+
+
 
 
 
