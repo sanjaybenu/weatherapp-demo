@@ -125,12 +125,7 @@ $(document).ready(function () {
           index += 8;
           localStorage.setItem("forecast", JSON.stringify(weatherForecast));
           console.log(weatherForecast);
-         // var displayData = JSON.parse(localStorage.getItem("forecast"));
-       // var currentTemp = $("<div></div>")
-        //currentTemp.addClass("text-center")
-        //var currentTempEl = displayData[0].temp
-       // currentTemp.text(currentTempEl)
-        //$("#cityName").append(currentTemp)
+  
         }
         var displayData = JSON.parse(localStorage.getItem("forecast"));
         var currentTemp = $("<div></div>")
