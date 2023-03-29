@@ -8,7 +8,7 @@ $(document).ready(function () {
     var index = 0
     var weatherForecast = []
     var El = $("#nameEl").val();
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + El + "&limit=5&units=metric&appid=7ceb463b0dbb74278996f51113e27ee3", {
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + El + "&limit=5&units=metric&appid=7ceb463b0dbb74278996f51113e27ee3", {
       method: 'GET',
       redirect: 'follow',
     })
@@ -86,7 +86,7 @@ $(document).ready(function () {
     var cityWeather = []
     var index = 0
     var weatherForecast = []
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + abc + "&limit=5&units=metric&appid=7ceb463b0dbb74278996f51113e27ee3", {
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + abc + "&limit=5&units=metric&appid=7ceb463b0dbb74278996f51113e27ee3", {
       method: 'GET',
       redirect: 'follow',
     })
