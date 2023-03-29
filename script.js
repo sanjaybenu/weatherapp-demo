@@ -59,7 +59,7 @@ $(document).ready(function () {
           var cityDiv = $("<div></div>")
           cityDiv.addClass("col-md-3 custom mx-2 my-2")
           var img = $("<img>")
-          img.attr('src', 'https://openweathermap.org/img/wn/'+icon+'@2x.png')
+          img.attr('src', 'https://openweathermap.org/img/wn/'+displayData[i].icon+'@2x.png')
           img.css({'width': '50px', 'height': '50px'})
           $(cityDiv).append(img)
           var datePara = $("<p></p>");
@@ -125,12 +125,7 @@ $(document).ready(function () {
           index += 8;
           localStorage.setItem("forecast", JSON.stringify(weatherForecast));
           console.log(weatherForecast);
-         // var displayData = JSON.parse(localStorage.getItem("forecast"));
-       // var currentTemp = $("<div></div>")
-        //currentTemp.addClass("text-center")
-        //var currentTempEl = displayData[0].temp
-       // currentTemp.text(currentTempEl)
-        //$("#cityName").append(currentTemp)
+  
         }
         var displayData = JSON.parse(localStorage.getItem("forecast"));
         var currentTemp = $("<div></div>")
@@ -142,7 +137,7 @@ $(document).ready(function () {
           var cityDiv = $("<div></div>")
           cityDiv.addClass("col-md-3 custom mx-2 my-2")
           var img = $("<img>")
-          img.attr('src', 'https://openweathermap.org/img/wn/'+icon+'@2x.png')
+          img.attr('src', 'https://openweathermap.org/img/wn/'+displayData[i].icon+'@2x.png')
           img.css({'width': '50px', 'height': '50px'})
           $(cityDiv).append(img)
           var datePara = $("<p></p>");
