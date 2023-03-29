@@ -58,6 +58,10 @@ $(document).ready(function () {
         for (i = 0; i < displayData.length; i++) {
           var cityDiv = $("<div></div>")
           cityDiv.addClass("col-md-3 custom mx-2 my-2")
+          var img = $("<img>")
+          img.attr('src', 'https://openweathermap.org/img/wn/'+icon+'@2x.png')
+          img.css({'width': '50px', 'height': '50px'})
+          $(cityDiv).append(img)
           var datePara = $("<p></p>");
           var dateDis = dayjs(displayData[i].date).format("ddd")
           datePara.text(dateDis)
@@ -137,6 +141,10 @@ $(document).ready(function () {
         for (i = 0; i < displayData.length; i++) {
           var cityDiv = $("<div></div>")
           cityDiv.addClass("col-md-3 custom mx-2 my-2")
+          var img = $("<img>")
+          img.attr('src', 'https://openweathermap.org/img/wn/'+icon+'@2x.png')
+          img.css({'width': '50px', 'height': '50px'})
+          $(cityDiv).append(img)
           var datePara = $("<p></p>");
           var dateDis = dayjs(displayData[i].date).format("ddd")
           datePara.text(dateDis)
